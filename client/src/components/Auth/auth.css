@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+.typewriter {
+  background-color: #10439f;
+  height: 70px;
+}
+.type span {
+  display: inline-block;
+}
+.type h2 {
+  overflow: hidden;
+  /*     background-color:green; */
+}
+.type {
+  font-family: monospace;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.type h2 span:nth-of-type(1) {
+  animation-name: developer;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(10);
+  background-color: white;
+}
+.type h2 span:nth-of-type(2) {
+  animation-name: design;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(10);
+  background-color: white;
+}
+.type h2 span:nth-of-type(3) {
+  animation-name: prog;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(10);
+  background-color: white;
+}
+
+@keyframes developer {
+  0%,
+  30%,
+  100% {
+    width: 0;
+  }
+  15%,
+  22.5% {
+    width: calc(12px * 7);
+  }
+}
+@keyframes design {
+  0%,
+  30%,
+  60%,
+  100% {
+    width: 0;
+  }
+  45%,
+  50% {
+    width: calc(12px * 7);
+  }
+}
+@keyframes prog {
+  0%,
+  60%,
+  90%,
+  100% {
+    width: 0;
+  }
+  75%,
+  82% {
+    width: calc(12px * 7);
+  }
+}
+main {
+  height: 100svh;
+  background-color: #874ccc;
+}
+.signuppage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80svh;
+}
+.form {
+  width: 50svw;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #c65bcf;
+}
+.formhead {
+  text-align: center;
+  padding: 8px;
+}
+.custom-input {
+  height: 100%;
+  width: 100%;
+  padding-left: 25px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  padding: 15px;
+  margin: 5px;
+  background: #dde1e7;
+  color: #595959;
+  border-radius: 25px;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #ffffff73;
+}
+
+@media only screen and (max-width: 600px) {
+  .form {
+    width: 80svw;
+  }
+}
+
+.linkbtn {
+  border: none;
+  outline: none;
+  text-decoration: underline;
+  background-color: transparent;
+  color: blue;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font: inherit;
+  padding: 5px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+.sb {
+  display: flex;
+  justify-content: center;
+}
+.submit-btn {
+  background-color: #4caf50; /* Green background color */
+  border: none; /* Remove border */
+  color: white; /* White text color */
+  padding: 15px 25px; /* Padding */
+  text-align: center;
+  width: 300px;
+  font-size: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* Button hover effect */
+.submit-btn:hover {
+  background-color: #45a049; /* Dark green background color on hover */
+}
