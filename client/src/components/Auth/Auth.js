@@ -51,7 +51,7 @@ const Auth = () => {
       setIsLoading(true);
       console.log("Data is validated");
       const lors = registered ? 'login' : 'register';
-      await axios.post(`${url}/api/v1/user/${lors}`, userData)
+      await axios.post(`https://bidbay-im8r.onrender.com/api/v1/user/${lors}`, userData)
       .then(function (response) {
         console.log(response.data.user);
         localStorage.setItem("user", JSON.stringify(response.data.user));
