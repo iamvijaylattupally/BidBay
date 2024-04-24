@@ -29,6 +29,7 @@ const Productpage = (props) => {
       userid:props.user._id
     })
       .then(function (response) {
+        window.location.reload();
         alert("deleted from cart");
       })
       .catch(function (error) {
