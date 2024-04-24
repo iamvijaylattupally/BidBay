@@ -3,6 +3,7 @@ import "./pp.css";
 import ProductCard from './ProductCard';
 import ProductCardDelete from './ProductCardDelete';
 import axios from 'axios';
+import {url} from "../../url.js";
 
 const Productpage = (props) => {
 
@@ -11,7 +12,7 @@ const Productpage = (props) => {
     alert(title);
   };
   const handleCartClicked = async (title) => {
-    await axios.post('/api/v1/product/addtocart', {
+    await axios.post(`${url}/api/v1/product/addtocart`, {
       userid: props.user._id,
       productid: title
     })
@@ -23,7 +24,7 @@ const Productpage = (props) => {
       });
   };
   const handleDeleteCartClicked = async (title) => {
-    await axios.post('/api/v1/product/deletecartproduct', {
+    await axios.post(`${url}/api/v1/product/deletecartproduct`, {
       pid: title,
       userid:props.user._id
     })

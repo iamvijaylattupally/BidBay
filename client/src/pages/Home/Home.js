@@ -4,13 +4,14 @@ import "../../components/load.css";
 import "./home.css";
 import PP from "../../components/Productpage/Productpage";
 import axios from "axios";
+import {url} from "../../url.js";
 
 const Home = () => {
   const [products,setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
-    axios.post('/api/v1/product/getproducts', {
+    axios.post(`${url}/api/v1/product/getproducts`, {
       userid:user._id
     })
     .then(function (response) {

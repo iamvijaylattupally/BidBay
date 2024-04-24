@@ -3,7 +3,7 @@ import './auth.css';
 import axios from 'axios';
 import { useCookies, Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
-
+import {url} from "../../url.js";
 const Auth = () => {
   const [userData, setUserData] = useState({
     email: '',
@@ -51,7 +51,7 @@ const Auth = () => {
       setIsLoading(true);
       console.log("Data is validated");
       const lors = registered ? 'login' : 'register';
-      await axios.post(`/api/v1/user/${lors}`, userData)
+      await axios.post(`${url}/api/v1/user/${lors}`, userData)
       .then(function (response) {
         console.log(response.data.user);
         localStorage.setItem("user", JSON.stringify(response.data.user));

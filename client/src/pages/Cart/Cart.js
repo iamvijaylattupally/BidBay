@@ -3,14 +3,14 @@ import Navbar from '../../components/Navbar/Navbar';
 import "../../components/load.css";
 import PP from "../../components/Productpage/Productpage";
 import axios from 'axios';
-
+import {url} from "../../url.js";
 const Cart = () => {
   const [loading, setLoading] = useState(false);
   const [cart,setCart] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
     setLoading(true);
-    axios.post('/api/v1/product/getcartproducts', {
+    axios.post(`${url}/api/v1/product/getcartproducts`, {
       userid:user._id
     })
     .then(function (response) {
