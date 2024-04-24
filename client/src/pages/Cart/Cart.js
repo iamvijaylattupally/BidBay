@@ -14,6 +14,7 @@ const Cart = () => {
       userid:user._id
     })
     .then(function (response) {
+      setLoading(false);
       console.log(response.data.products)
       setCart(response.data.products);
     })
@@ -21,13 +22,13 @@ const Cart = () => {
       console.log(error);
       alert("error in fetching cart products")
     });
-    setLoading(false);
+    
   }  , [])
     
   return (
     <>
       <Navbar />
-      {cart.length === 0 ? <h1>Cart is empty</h1> :
+      {cart.length === 0 && loading ? <><h1>Cart is empty</h1><div className='loader-container'><div class="loader"></div></div></>  :
         <PP 
           pagetitle="Cart Items"
           user={user}

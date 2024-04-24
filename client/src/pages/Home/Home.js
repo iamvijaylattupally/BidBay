@@ -11,10 +11,12 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
   useEffect(() => {
+    setLoading(true);
     axios.post(`${url}/api/v1/product/getproducts`, {
       userid:user._id
     })
     .then(function (response) {
+      setLoading(false);
       setProducts(response.data.products);
       console.log(response.data.products);
       console.log(products);
