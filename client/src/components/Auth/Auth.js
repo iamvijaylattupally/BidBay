@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useCookies, Cookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import {url} from "../../url.js";
+import "../load.css";
 const Auth = () => {
   const [userData, setUserData] = useState({
     email: '',
@@ -51,11 +52,13 @@ const Auth = () => {
       setIsLoading(true);
       console.log("Data is validated");
       const lors = registered ? 'login' : 'register';
-      await axios.post(`https://bidbay-im8r.onrender.com/api/v1/user/${lors}`, userData)
+      await axios.post(`http://localhost:8000/api/v1/user/${lors}`, userData)
       .then(function (response) {
+        console.log(response);
         console.log(response.data.user);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         setCookie("accessToken", response.data.accessToken, { path: "/" });
+        setIsLoading(false);
         navigate("/");
       })
       .catch(function (error) {
@@ -67,7 +70,6 @@ const Auth = () => {
           cpassword: '',
           name: ''
         })
-        setIsLoading(false);
         alert(error.response.data.message);
       });
       setUserData({
@@ -101,6 +103,7 @@ const Auth = () => {
         </div>
       </header>
       <main>
+      {isLoading ? <><div className='loader-container'><div class="loader"></div></div></>:
         <div className="signuppage">
           <div className="form">
             <form onSubmit={handleSubmit}>
@@ -181,9 +184,11 @@ const Auth = () => {
             </form>
           </div>
         </div>
+      }
       </main>
     </>
   );
+
 };
 
 export default Auth;

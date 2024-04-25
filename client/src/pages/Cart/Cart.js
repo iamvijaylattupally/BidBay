@@ -28,7 +28,7 @@ const Cart = () => {
   return (
     <>
       <Navbar />
-      {cart.length === 0 && loading ? <><h1>Cart is empty</h1><div className='loader-container'><div class="loader"></div></div></>  :
+      {cart.length === 0 && loading ?<><div className='loader-container'><div class="loader"></div></div></>  :
         <PP 
           pagetitle="Cart Items"
           user={user}

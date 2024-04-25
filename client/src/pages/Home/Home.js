@@ -22,8 +22,10 @@ const Home = () => {
       console.log(products);
     })
     .catch(function (error) {
+      setLoading(false);
       console.log(error);
     });
+    setLoading(false);
   }  , [])
   
   
