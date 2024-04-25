@@ -106,8 +106,12 @@ const deleteCartProduct = async (req, res) => {
         const user = await User.findOne({ _id: userid }); // Corrected: Pass the query object
         user.cartproducts = user.cartproducts.filter(prid => prid != pid); // Update user.cartproducts
         await user.save();
+        const productPromises = user.cartproducts.map(async (pid) => {
+            let prod = await Product.findById(pid);
+        });
+        const products = await Promise.all(productPromises);
         console.log("delete cart product is successful");
-        res.status(200).json({ message: "deleted" });
+        res.status(200).json({ message: "deleted",products:products});
     } catch (error) {
         console.log("Error in deleting product " + error);
         res.status(500).json({ message: "Try again" });
