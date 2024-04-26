@@ -62,7 +62,7 @@ const Auth = () => {
         navigate("/");
       })
       .catch(function (error) {
-        console.log(error.response.data.message);
+        console.log(error.response);
         setUserData({
           email: '',
           phonenumber: "",
