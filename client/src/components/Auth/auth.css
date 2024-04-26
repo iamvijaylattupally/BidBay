@@ -82,7 +82,7 @@
 }
 main {
   height: 100svh;
-  background-color: #874ccc;
+  background-color: #074173;
 }
 .signuppage {
   display: flex;
@@ -94,7 +94,7 @@ main {
   width: 50svw;
   border-radius: 8px;
   padding: 20px;
-  background-color: #c65bcf;
+  background-color: #C5FF95;
 }
 .formhead {
   text-align: center;

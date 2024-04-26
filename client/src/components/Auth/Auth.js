@@ -52,7 +52,7 @@ const Auth = () => {
       setIsLoading(true);
       console.log("Data is validated");
       const lors = registered ? 'login' : 'register';
-      await axios.post(`http://localhost:8000/api/v1/user/${lors}`, userData)
+      await axios.post(`https://bidbay-im8r.onrender.com/api/v1/user/${lors}`, userData)
       .then(function (response) {
         console.log(response);
         console.log(response.data.user);
@@ -62,7 +62,7 @@ const Auth = () => {
         navigate("/");
       })
       .catch(function (error) {
-        console.log(error.response);
+        console.log(error);
         setUserData({
           email: '',
           phonenumber: "",
@@ -70,7 +70,8 @@ const Auth = () => {
           cpassword: '',
           name: ''
         })
-        alert(error.response.data.message);
+        setIsLoading(false);
+        alert(error.response.data.message || "Something went wrong! Please try again later");
       });
       setUserData({
         email: '',
@@ -103,7 +104,7 @@ const Auth = () => {
         </div>
       </header>
       <main>
-      {isLoading ? <><div className='loader-container'><div class="loader"></div></div></>:
+      {
         <div className="signuppage">
           <div className="form">
             <form onSubmit={handleSubmit}>
@@ -172,14 +173,14 @@ const Auth = () => {
               </div>
               }
               {!registered &&
-                <div><button className='linkbtn'>Forgot password?</button></div>
+                <div><button onClick={()=>{alert("contanct admin")}} className='linkbtn'>Forgot password?</button></div>
               }
               <div>
                 <button className='linkbtn' type='button' onClick={() => { setRegistered(!registered) }}>{registered ? "New User? Sign-Up" : "Already a User? Login"}</button>
               </div>
               {!registered && <div><span>By clicking signing-up,You agree to all terms and conditions.</span></div>}
               <div className='sb'>
-                <button className='submit-btn' disabled={isLoading} type="submit">{!registered ? "SIGN-UP" : "LOGIN"}</button>
+                {isLoading ? <div class="loader"></div>:<button className='submit-btn' disabled={isLoading} type="submit">{!registered ? "SIGN-UP" : "LOGIN"}</button>}
               </div>
             </form>
           </div>
