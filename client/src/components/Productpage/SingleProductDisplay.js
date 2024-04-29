@@ -42,7 +42,7 @@ const SingleProductDisplay = (props) => {
 
     const handleCartClicked = async () => {
         setLoading(true);
-        await axios.post(`${url}/api/v1/product/addtocart`, {
+        await axios.put(`${url}/api/v1/product/addtocart`, {
           userid: user._id,
           productid: props.product._id,
         })
