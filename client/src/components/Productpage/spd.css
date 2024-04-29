@@ -1,0 +1,38 @@
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+    color: #3b71ca !important;
+  }
+  
+  .icon-hover:hover i {
+    color: #3b71ca !important;
+  }
+  .buybtn{
+    background-color: #3b71ca;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  main {
+    height: fit-content;
+    background-color: white;
+}
+.bidinp{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #3b71ca;
+    margin: 5px;
+}
+.buybtn:hover {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+  }

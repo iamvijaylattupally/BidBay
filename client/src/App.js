@@ -4,7 +4,10 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import Auth from './components/Auth/Auth';
 import Home from './pages/Home/Home';
 import Cart from "./pages/Cart/Cart";
-import SellingPage from './pages/SellingPage';
+import SellingPage from './pages/SellingPage/SellingPage';
+import AddProduct from './pages/AddProduct.js/AddProduct';
+import SingleProduct from './pages/SingleProduct/SingleProduct';
+import UserBids from "./pages/UserBids/UserBids";
 
 function App() {
   return (
@@ -35,6 +38,30 @@ function App() {
             element={
               <ProtectedRoutes>
                   <SellingPage />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/addproduct"
+            element={
+              <ProtectedRoutes>
+                  <AddProduct />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/singleproduct/:title"
+            element={
+              <ProtectedRoutes>
+                  <SingleProduct />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/userbids"
+            element={
+              <ProtectedRoutes>
+                  <UserBids />
               </ProtectedRoutes>
             }
           />

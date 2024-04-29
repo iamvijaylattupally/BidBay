@@ -52,7 +52,7 @@ const Auth = () => {
       setIsLoading(true);
       console.log("Data is validated");
       const lors = registered ? 'login' : 'register';
-      await axios.post(`https://bidbay-im8r.onrender.com/api/v1/user/${lors}`, userData)
+      await axios.post(`${url}/api/v1/user/${lors}`, userData)
       .then(function (response) {
         console.log(response);
         console.log(response.data.user);
@@ -71,7 +71,7 @@ const Auth = () => {
           name: ''
         })
         setIsLoading(false);
-        alert(error.response.data.message || "Something went wrong! Please try again later");
+        alert( "Something went wrong! Please try again later");
       });
       setUserData({
         email: '',
@@ -97,13 +97,13 @@ const Auth = () => {
         <div className="type">
           <h2>
             Welcome to BidBay
-            <span>___Bid</span>
-            <span>___Buy</span>
-            <span>__Sell</span>
+            <span>Bid</span>
+            <span>Buy</span>
+            <span>Sell</span>
           </h2>
         </div>
       </header>
-      <main>
+      <main className='mainContent'>
       {
         <div className="signuppage">
           <div className="form">

@@ -5,13 +5,14 @@ import ProductCardDelete from './ProductCardDelete';
 import axios from 'axios';
 import {url} from "../../url.js";
 import "../load.css";
+import SingleProduct from '../../pages/SingleProduct/SingleProduct.js';
+import { useNavigate } from 'react-router-dom';
 
 const Productpage = (props) => {
-
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const handleProductClicked = (title) => {
-    console.log(title);
-    alert(title);
+    navigate(`/SingleProduct/${title}`);
   };
   const handleCartClicked = async (title) => {
     setLoading(true);
@@ -87,7 +88,7 @@ const Productpage = (props) => {
                 deleteCartClicked={handleDeleteCartClicked}
               />
             ))
-          }
+          } 
         </div>
       </section>
     </>

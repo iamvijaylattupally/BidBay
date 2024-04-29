@@ -10,9 +10,11 @@ app.use(cors());
 //import routes
 import userRoute from "./routes/user.route.js";
 import productRoute from "./routes/product.route.js";
+import bidRoute from "./routes/bid.route.js";
 
 //use routes
 app.use("/api/v1/user",userRoute);
 app.use("/api/v1/product",productRoute);
+app.use("/api/v1/bid",bidRoute);
 
 export {app}

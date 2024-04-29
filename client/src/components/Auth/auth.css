@@ -53,7 +53,7 @@
   }
   15%,
   22.5% {
-    width: calc(12px * 7);
+    width: calc(10px * 5);
   }
 }
 @keyframes design {
@@ -65,7 +65,7 @@
   }
   45%,
   50% {
-    width: calc(12px * 7);
+    width: calc(10px * 5);
   }
 }
 @keyframes prog {
@@ -77,14 +77,15 @@
   }
   75%,
   82% {
-    width: calc(12px * 7);
+    width: calc(10px * 5);
   }
 }
-main {
+.mainContent {
   height: 100svh;
   background-color: #074173;
 }
 .signuppage {
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

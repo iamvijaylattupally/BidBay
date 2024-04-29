@@ -39,7 +39,15 @@ const productSchema = new mongoose.Schema(
                 type:mongoose.Schema.Types.ObjectId,
                 ref:"Bid"
             }
-        ]
+        ],
+        highestbidder:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User"
+        },
+        highestbiddermail:{
+            type:String,
+        }
+
     },{timestamps:true}
 )
 

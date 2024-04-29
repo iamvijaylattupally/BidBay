@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { addProduct,addProductToCart,getProducts,getCartProducts,deleteCartProduct } from '../controllers/product.controller.js';
+import { addProduct,addProductToCart,getProducts,getCartProducts,deleteCartProduct,getSingleProduct } from '../controllers/product.controller.js';
 import {upload} from "../middlewares/multer.middleware.js";
 
 const router = Router();
@@ -18,6 +18,7 @@ router.route("/addtocart").post(addProductToCart);
 router.route("/getproducts").post(getProducts);
 router.route("/getcartproducts").post(getCartProducts);
 router.route("/deletecartproduct").post(deleteCartProduct);
+router.route("/getsingleproduct/:pid").get(getSingleProduct);
 
 
 

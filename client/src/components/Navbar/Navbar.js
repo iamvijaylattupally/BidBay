@@ -4,13 +4,15 @@ import { RiAuctionFill } from "react-icons/ri";
 import { FaShoppingCart,FaHome  } from "react-icons/fa";
 import { BiSolidLogOut } from "react-icons/bi";
 import { MdSell } from "react-icons/md";
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 const Navbar = () => {
+  const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies();
-  function handleLogout(){
+  async function handleLogout(){
     localStorage.removeItem("user");
     removeCookie('accessToken');
+    navigate("/");
     window.location.reload();
   }
   return (
@@ -29,11 +31,15 @@ const Navbar = () => {
             <NavLink to="/cart"><vij className="active"><FaShoppingCart /><span className='space'>cart</span></vij></NavLink>
             </li>
             <li>
-             <NavLink to="/sellerpage"><vij className="active"><MdSell /><span className='space'>My Products</span></vij></NavLink>
+            <NavLink to="/userbids"><vij className="active"><RiAuctionFill /><span className='space'>My Bids</span></vij></NavLink>
+            </li>
+            <li>
+             <NavLink to="/sellerpage"><vij className="active"><MdSell /><span className='space'>Sell</span></vij></NavLink>
             </li>
             <li>
             <button class="custom-button" onClick={handleLogout}><vij className="active"><BiSolidLogOut /><span className='space'>logout</span></vij></button>
             </li>
+            
           </ul>
         </nav>
         <label htmlFor="nav_check" className="hamburger">
