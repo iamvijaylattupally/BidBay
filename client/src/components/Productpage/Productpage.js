@@ -38,7 +38,7 @@ const Productpage = (props) => {
     })
       .then(function (response) {
         setLoading(false);
-        window.location.reload();
+        navigate("/");
       })
       .catch(function (error) {
         setLoading(false);

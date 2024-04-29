@@ -24,8 +24,8 @@ const ProductCardDelete = (props) => {
         <h3 class="projects__title">current price: {props.currentprice}</h3>
 
         <p class="projects__description">
-          {props.productdescription}
-        </p>
+            {props.productdescription.split(' ').slice(0, 15).join(' ')}{props.productdescription.split(' ').length > 15 ? ' ...' : ''}
+          </p>
       </div>
 
       <div class="projects__buttons">

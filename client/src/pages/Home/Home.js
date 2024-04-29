@@ -34,12 +34,13 @@ const Home = () => {
       <Navbar />
       {
         loading ? <div className='loader-container'><div class="loader"></div></div> :
-        <PP 
-          pagetitle="Browse Products"
-          user={user}
-          products={products}
-          cart="0"
-        />  
+        products.length === 0 ? <h1>No products to display</h1> :
+          <PP 
+            pagetitle="Browse Products"
+            user={user}
+            products={products}
+            cart="0"
+          />  
       }
     </>
   )
