@@ -10,7 +10,7 @@ const SingleSellPage = (props) => {
   const [buyer, setBuyer] = useState({});
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    axios.get(`{url}/api/v1/product/getsellproduct/${id}`)
+    axios.get(`https://bidbay-im8r.onrender.com/api/v1/product/getsellproduct/${id}`)
     .then((res) => {
       console.log(res.data);
       setProduct(res.data.product);
@@ -23,7 +23,7 @@ const SingleSellPage = (props) => {
   }, []);
   async function handleSoldProduct(){
     setLoading(true);
-    axios.post(`{url}/api/v1/product/soldproduct`,{
+    axios.post(`https://bidbay-im8r.onrender.com/api/v1/product/soldproduct`,{
       pid:id,
       bid:buyer._id,
       sid:product.sellerid
