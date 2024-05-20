@@ -137,6 +137,85 @@ const getSingleProduct = async(req,res)=>{
     }
 }
 
+async function getUserProducts(req,res){
+    try{
+        const {userid} = req.body;
+        const user = await User.findById(userid);
+        if(user){
+            const up = user.userproducts;
+            console.log(up);
+            
+            const productPromises = up.map(async(pid)=>{
+                let prod = await Product.findById(pid);
+                return prod;
+            
+            })
+            const products = await Promise.all(productPromises);
+            
+            res.status(200).json({products:products});
+        }else{
+            res.status(404).json({message:"User not found"});
+        }
+    }catch(err){
+        console.log("Error in getting user products "+err);
+        res.status(500).json({message:"Try again"});
+    }
+}
+
+const getSellProduct = async(req,res)=>{
+    try{
+        const pid = req.params.pid;
+        const product = await Product.findById(pid);
+        if(product){
+            if(product.status){
+                if(product.highestbidder==null){
+                    res.status(200).json({product:product});
+                }else{
+                const buyer = await User.findById(product.highestbidder).select("-password -refreshToken -cartproducts -productsbought");
+                if(buyer){
+                    res.status(200).json({product:product,buyer:buyer});
+                }else{
+                    res.status(404).json({message:"Buyer not found"});
+                }
+            }
+            }else{
+                const buyer = await User.findById(product.highestbidder).select("-password -refreshToken -cartproducts -productsbought");
+                res.status(200).json({message:"Product is already sold" , product:product,buyer:buyer});
+            }
+        }else{
+            res.status(404).json({message:"Product not found"});
+        }
+    }catch(err){
+        console.log("Error in selling product "+err);
+        res.status(500).json({message:"Try again"});
+    }
+}
+
+const soldProduct = async(req,res)=>{
+    try{
+        const {pid,bid,sid} = req.body;
+        console.log(pid,bid,sid);
+        const product = await Product.findById(pid);
+        const buyer = await User.findById(bid);
+        const seller = await User.findById(sid);
+        console.log(product,buyer,seller);
+        if(product && buyer && seller){
+            product.status = false;
+            await product.save();
+            const productsold = await Product.findById(pid);
+            await buyer.productsbought.push(pid);
+            await seller.save();
+            await buyer.save();
+            const buyersold = await User.findById(bid);
+            res.status(200).json({message:"Product sold successfully",product:productsold,buyer:buyersold});
+        }else{
+            res.status(404).json({message:"Product not found"});
+        }
+    }catch(err){
+        console.log("Error in selling product "+err);
+        res.status(500).json({message:"Try again"});
+    }
+}
 
 export {
     addProduct,
@@ -144,5 +223,8 @@ export {
     getProducts,
     getCartProducts,
     deleteCartProduct,
-    getSingleProduct
+    getSingleProduct,
+    getUserProducts,
+    getSellProduct,
+    soldProduct
 }

@@ -8,7 +8,7 @@ import SellingPage from './pages/SellingPage/SellingPage';
 import AddProduct from './pages/AddProduct.js/AddProduct';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
 import UserBids from "./pages/UserBids/UserBids";
-
+import SingleSellPage from './pages/SellingPage/SingleSellPage';
 function App() {
   return (
     <>
@@ -54,6 +54,14 @@ function App() {
             element={
               <ProtectedRoutes>
                   <SingleProduct />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/singlesellProduct/:id"
+            element={
+              <ProtectedRoutes>
+                  <SingleSellPage />
               </ProtectedRoutes>
             }
           />

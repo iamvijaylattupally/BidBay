@@ -3,11 +3,16 @@ import NavBar from "../../components/Navbar/Navbar";
 import {url} from "../../url";
 import axios from 'axios';
 import ProductCard from '../../components/Productpage/ProductCard';
+import { useNavigate } from 'react-router-dom';
 
 const UserBids = () => {
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const [loading,setLoading] = useState(false);
   const [products,setproducts] = useState([]);
+  const handleProductClicked = (title) => {
+    navigate(`/SingleProduct/${title}`);
+  };
   async function getBids(){
     setLoading(true);
     await axios.post(`${url}/api/v1/bid/getbids`,{
@@ -47,6 +52,7 @@ const UserBids = () => {
                 title={product.productname}
                 currentprice={product.currentprice}
                 productdescription={product.description}
+                productClicked={handleProductClicked}
                 status={product.status}
               />
             ))
