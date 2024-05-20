@@ -2,7 +2,7 @@ import React,{useState , useEffect} from 'react'
 import Navbar from '../../components/Navbar/Navbar';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import {url} from "../../url.js";
 
 const SingleSellPage = (props) => {
   const { id } = useParams();
@@ -10,7 +10,7 @@ const SingleSellPage = (props) => {
   const [buyer, setBuyer] = useState({});
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/v1/product/getsellproduct/${id}`)
+    axios.get(`{url}/api/v1/product/getsellproduct/${id}`)
     .then((res) => {
       console.log(res.data);
       setProduct(res.data.product);
@@ -23,7 +23,7 @@ const SingleSellPage = (props) => {
   }, []);
   async function handleSoldProduct(){
     setLoading(true);
-    axios.post(`http://localhost:8000/api/v1/product/soldproduct`,{
+    axios.post(`{url}/api/v1/product/soldproduct`,{
       pid:id,
       bid:buyer._id,
       sid:product.sellerid
