@@ -10,7 +10,7 @@ const SellingPage = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios.post(`{url}/api/v1/product/getuserproducts`, { userid: user._id })
+    axios.post(`https://bidbay-im8r.onrender.com/api/v1/product/getuserproducts`, { userid: user._id })
       .then((res) => {
         console.log(res.data.products);
         setProducts(res.data.products);
