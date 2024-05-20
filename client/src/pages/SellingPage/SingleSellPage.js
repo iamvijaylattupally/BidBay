@@ -82,7 +82,7 @@ const SingleSellPage = (props) => {
                                     <dt>Name : {buyer?.name}</dt>
                                     <dt>Email : {buyer?.email}</dt>
                                     <dt>Mobile No. : {buyer?.phonenumber}</dt>
-                                    {product?.status ? "":<dt>Contanct the buyer and complete purchase</dt>}
+                                    {product?.status ? "":<dt>Contact the buyer and complete purchase</dt>}
                                     {product?.status &&
                                     <>
                                       <dt>Settle Bid and confirm buyer</dt>
