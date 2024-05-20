@@ -4,13 +4,13 @@ import "./sellingpage.css";
 import SellCard from './SellCard';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import {url} from "../../url.js";
 const SellingPage = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios.post('http://localhost:8000/api/v1/product/getuserproducts', { userid: user._id })
+    axios.post(`{url}/api/v1/product/getuserproducts`, { userid: user._id })
       .then((res) => {
         console.log(res.data.products);
         setProducts(res.data.products);
